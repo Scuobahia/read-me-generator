@@ -1,15 +1,14 @@
 {
-    "name": "readMeGenerator",
-    "version": "1.0.0",
-    "description": "Application that generates a readme file using the command line",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Scuobahia",
-    "license": "ISC",
-    "dependencies": {
-      "inquirer": "^8.1.1"
-    }
+  "name": "readMeGenerator",
+  "version": "1.0.0",
+  "description": "Application that generates a readme file using the command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scuobahia",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.1.1"
   }
-  
+}

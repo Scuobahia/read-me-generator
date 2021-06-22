@@ -7,12 +7,26 @@ inquirer.prompt([
     {
         type: "input",
         name: "Author",
-        message: "What is the author's name?"
+        message: "What is the author's name? (required)",
+        validate: input => {
+            if (input) {
+                return true;
+            }else {
+                console.log ("Please enter the authors name!");
+            }
+        }
     },
     {
         type: "input",
         name: "Username",
-        message: "What is your Github username?"
+        message: "What is your Github username? (required)",
+        validate: input => {
+            if (input) {
+                return true;
+            }else {
+                console.log ("Please enter your Github username!");
+            }
+        }
     },
     {
         type: "input",
@@ -22,12 +36,26 @@ inquirer.prompt([
     {
         type: "input",
         name: "Title",
-        message: "What is your project title?"
+        message: "What is your project title? (required)",
+        validate: input => {
+            if (input) {
+                return true;
+            }else {
+                console.log ("Please enter the name of the project!");
+            }
+        }
     },
     {
         input: "input",
         name: "description",
-        message: "Description:"
+        message: "Please enter a description of your project: (required)",
+        validate: input => {
+            if (input) {
+                return true;
+            }else {
+                console.log ("Please enter a description of the project!");
+            }
+        }
     },
     {
         type: "input",
@@ -42,43 +70,53 @@ inquirer.prompt([
     {
         type: "input",
         name: "Installation",
-        message: "What does the user need to install to run this app"
+        message: "What does the user need to install to run this app (required)",
+        validate: input => {
+            if (input) {
+                return true;
+            }else {
+                console.log ("Please enter the installation steps!");
+            }
+        }
     },
     {
         input: "input",
         name: "Usage",
-        message: "How is the app used? Provide necessary instructions"
-    },
-    {
-        type: "input",
-        name: "License",
-        message: "What license is being used?"
+        message: "How is the app used? (required)",
+        validate: input => {
+            if (input) {
+                return true;
+            }else {
+                console.log ("Please provide the necessary instructions"),
+            }
+        }
     },
     {
         input: "input",
         name: "Credits",
-        message: "Who contribute to this project?"
+        message: "Who contribute to this project? "
     },
     {
         type: "list",
         name: "License",
-        message: "What license is being used?",
-        choices:["MIT","BSD-3-Clause" "BSD-2-Clause", "Apache", "GPLv2", "Unlicense"]
-    },
-    {
-        input: "input",
-        name: "Tests",
-        message: "Write tests for your application and write instructions on how to run them."
+        message: "What license is being used? (required)",
+        choices:["MIT","BSD-3-Clause" "BSD-2-Clause", "Apache", "GPLv2", "Unlicense"],
+        validate: input => {
+            if (input){
+            return true;
+        } else {
+            console.log("Please pick a license type!");
+            return false;
+        }
+        }
     },
     {
         type: "input",
         name: "Contributions",
         message: "Add guidelines here for contributing:"
     },
-
-{
-
-}
+    {
+    }
 ])
 
 // TODO: Create a function to write README file

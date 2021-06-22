@@ -1,15 +1,15 @@
 {
-    "name": "static-site",
+    "name": "readMeGenerator",
     "version": "1.0.0",
-    "description": "",
+    "description": "Application that generates a readme file using the command line",
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "",
+    "author": "Scuobahia",
     "license": "ISC",
     "dependencies": {
-      "inquirer": "^6.3.1"
+      "inquirer": "^8.1.1"
     }
   }
   

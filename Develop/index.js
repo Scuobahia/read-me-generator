@@ -60,9 +60,20 @@ inquirer.prompt([
         message: "Who contribute to this project?"
     },
     {
-        type: "input",
+        type: "list",
         name: "License",
-        message: "What license is being used?"
+        message: "What license is being used?",
+        choices:["MIT","BSD-3-Clause" "BSD-2-Clause", "Apache", "GPLv2", "Unlicense"]
+    },
+    {
+        input: "input",
+        name: "Tests",
+        message: "Write tests for your application and write instructions on how to run them."
+    },
+    {
+        type: "input",
+        name: "Contributions",
+        message: "Add guidelines here for contributing:"
     },
 
 {

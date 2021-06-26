@@ -78,6 +78,18 @@ const promptUser = () => {
         }
     },
     {
+        type: "input",
+        name: "test",
+        message: "What command should be use to run a test? (required)",
+        validate: input => {
+            if (input) {
+                return true;
+            }else {
+                console.log ("Please enter the installation commands!");
+            }
+        }
+    },
+    {
         input: "input",
         name: "usage",
         message: "How is the app used? (required)",
@@ -128,44 +140,47 @@ function generateMD(response){
         badge = "![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)"
     }
     return `# ${response.title} ${badge}
-    Description
+   ## Description
     ${response.description}
 
-    Author's Name
+    ###Author's Name
     ${response.author}
-    Github Username
+    ###Github Username
     ${response.username}
-    User's email address
+    ###User's email address
     ${response.email}
-    Projects website URL
+    ###Projects website URL
     ${response.webpage}
 
-    Table of Contents:
-    *Installation
-    *Usage
-    *License
-    *Contribution
-    *Tests
-    *Questions
+    ##Table of Contents:
+    -[Installation](#installation)
+    -[Usage](#usage)
+    -[License](#license)
+    -[Contribution](#contribution)
+    -[Tests](#test)
+    -[Questions](#questions)
 
-    Installation:
+    ###Installation:
     In order to install the necessary dependencies, open the console and run the following:
     \`\`\`${response.installation}\`\`\`
 
-    Usage:
+    ###Usage:
     ${response.usage}
 
-    License:
+    ###Test:
+    ${response.test}
+
+    ###License:
     This project is licensed under:
     ${response.license}
 
-    Contribution:
+    ###Contribution:
     ${response.credits}
 
-    Guidelines how to contribute:
+    ###Guidelines how to contribute:
     ${response.contributions}
     
-    Questions:
+    ###Questions:
     If you have any questions contact me on [GitHub](https://github.com/${response.username}) or contact 
 ${response.author} at ${response.email}
     `

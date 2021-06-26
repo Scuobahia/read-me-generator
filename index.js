@@ -100,7 +100,7 @@ inquirer.prompt([
         type: "list",
         name: "License",
         message: "What license is being used? (required)",
-        choices:["MIT","BSD-3-Clause" "BSD-2-Clause", "Apache", "GPLv2", "Unlicense"],
+        choices:["MIT","BSD 3", "Apache", "GPL", "None"],
         validate: input => {
             if (input){
             return true;
@@ -115,17 +115,31 @@ inquirer.prompt([
         name: "Contributions",
         message: "Add guidelines here for contributing:"
     },
-    {
-    }
 ])
 
-    //Write to File
-function writeToFile(data); {
+
+function generateMD(response){
+    let badge = "";
+    if(response.license == "MIT"){
+        badge = "![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)"
+    }else if (response.license == "APACHE 2.0"){
+        badge = "![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)"
+    }else if (response.license == "GPL 3.0"){
+        badge = "![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)"
+    }else if (response.license == "BSD 3"){
+        badge = "![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)"
+    }
+    return `# ${response.title} ${badge}
+    ${response.description}
+    ## Tbale of Contents:
+    *[Installation](#installation)
+    *[Usage](#usage)
+    *[License](#license)
+    *[Contribution](#contribution)
+    *[Tests](#tests)
+    *[Questions](#questions)
+
+    ###Installation:
     
-}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
+    
+    `

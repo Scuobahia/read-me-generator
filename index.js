@@ -110,7 +110,7 @@ const promptUser = () => {
     },
     {
         type: "input",
-        name: "Contributions",
+        name: "contributions",
         message: "Add guidelines here for contributing:"
     },
 ])
@@ -161,6 +161,9 @@ function generateMD(response){
 
     Contribution:
     ${response.credits}
+
+    Guidelines how to contribute:
+    ${response.contributions}
     
     Questions:
     If you have any questions contact me on [GitHub](https://github.com/${response.username}) or contact 

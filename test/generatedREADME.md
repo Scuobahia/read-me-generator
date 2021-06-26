@@ -1,17 +1,17 @@
-# asdf ![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
+# ReadMe generator ![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
     Description
-    sdaf
+    The application helps the user through node.js to generate a README file. The application uses inquirer to promt the user for info.
 
     Author's Name
-    adf
+    Antonio
     Github Username
-    adf
+    scuobahia
     User's email address
-    dsaf
+    scuobahia@gmail.com
+    Projects website URL
+    undefined
 
-    
-
-    ## Table of Contents:
+    Table of Contents:
     *Installation
     *Usage
     *License
@@ -21,23 +21,22 @@
 
     Installation:
     In order to install the necessary dependencies, open the console and run the following:
-    ```sadf```
+    ```npm install ```
 
     Usage:
-    adf
+    node.js
 
     License:
     This project is licensed under:
     MIT
 
     Contribution:
-    
-    
-    Tests:
-    In order to test open the console and run the following:
-    ```undefined```
+    NA
 
+    Guidelines how to contribute:
+    NA
+    
     Questions:
-    If you have any questions contact me on [GitHub](https://github.com/adf) or contact 
-adf at dsaf
+    If you have any questions contact me on [GitHub](https://github.com/scuobahia) or contact 
+Antonio at scuobahia@gmail.com
     

@@ -1,14 +1,15 @@
-// Packages used for this application:
 const inquirer = require('inquirer');
 const fs = require ('fs');
+const Choices = require("inquirer/lib/objects/choices");
+const { report } = require('process');
 const util = require('util');
-// TODO: Create an array of questions for user input
-const writeFileSync = util.promisify(fs.writefile)
-function promptUser(){
+
+const writeFileAsync = util.promisify(fs.writeFile)
+const promptUser = () => {
     return inquirer.prompt([
     {
         type: "input",
-        name: "Author",
+        name: "author",
         message: "What is the author's name? (required)",
         validate: input => {
             if (input) {
@@ -20,7 +21,7 @@ function promptUser(){
     },
     {
         type: "input",
-        name: "Username",
+        name: "username",
         message: "What is your Github username? (required)",
         validate: input => {
             if (input) {
@@ -32,12 +33,12 @@ function promptUser(){
     },
     {
         type: "input",
-        name: "Email",
+        name: "email",
         message: "What is your email address?"
     },
     {
         type: "input",
-        name: "Title",
+        name: "title",
         message: "What is your project title? (required)",
         validate: input => {
             if (input) {
@@ -61,29 +62,24 @@ function promptUser(){
     },
     {
         type: "input",
-        name: "Webpage URL:",
-        message: "Webpage"
+        name: "webpage:",
+        message: "What is the Webpage URL"
     },
     {
         type: "input",
-        name: "Table of Contents",
-        message: "Table of Contents"
-    },
-    {
-        type: "input",
-        name: "Installation",
-        message: "What does the user need to install to run this app (required)",
+        name: "installation",
+        message: "What command should be run to install dependencies? (required)",
         validate: input => {
             if (input) {
                 return true;
             }else {
-                console.log ("Please enter the installation steps!");
+                console.log ("Please enter the installation commands!");
             }
         }
     },
     {
         input: "input",
-        name: "Usage",
+        name: "usage",
         message: "How is the app used? (required)",
         validate: input => {
             if (input) {
@@ -95,12 +91,12 @@ function promptUser(){
     },
     {
         input: "input",
-        name: "Credits",
+        name: "credits",
         message: "Who contribute to this project? "
     },
     {
         type: "list",
-        name: "License",
+        name: "license",
         message: "What license is being used? (required)",
         choices:["MIT","BSD 3", "Apache", "GPL", "None"],
         validate: input => {
@@ -118,7 +114,7 @@ function promptUser(){
         message: "Add guidelines here for contributing:"
     },
 ])
-
+}
 
 function generateMD(response){
     let badge = "";
@@ -132,34 +128,41 @@ function generateMD(response){
         badge = "![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)"
     }
     return `# ${response.title} ${badge}
+    Description
     ${response.description}
-    ## Tbale of Contents:
-    *[Installation](#installation)
-    *[Usage](#usage)
-    *[License](#license)
-    *[Contribution](#contribution)
-    *[Tests](#tests)
-    *[Questions](#questions)
 
-    ###Installation:
+    Author's Name
+    ${response.author}
+    Github Username
+    ${response.username}
+    User's email address
+    ${response.email}
+    Projects website URL
+    ${response.webpage}
+
+    Table of Contents:
+    *Installation
+    *Usage
+    *License
+    *Contribution
+    *Tests
+    *Questions
+
+    Installation:
     In order to install the necessary dependencies, open the console and run the following:
     \`\`\`${response.installation}\`\`\`
 
-    ### Usage:
+    Usage:
     ${response.usage}
 
-    ###License:
+    License:
     This project is licensed under:
     ${response.license}
 
-    ###Contribution:
-    ${response.contribute}
+    Contribution:
+    ${response.credits}
     
-    ###Tests:
-    In order to test open the console and run the following:
-    \`\`\`${response.tests}\`\`\`
-
-    ###Questions:
+    Questions:
     If you have any questions contact me on [GitHub](https://github.com/${response.username}) or contact 
 ${response.author} at ${response.email}
     `
@@ -167,7 +170,7 @@ ${response.author} at ${response.email}
 
 promptUser().then(function(response){
     const markdown = generateMD(response);
-    return fs.writeFileSync("./test/generatedREADME.md", markdown);
+    return writeFileAsync("./test/generatedREADME.md", markdown);
 }).then(function() {
     console.log("Generating README.md...");
 }).catch(function(err){

@@ -62,8 +62,28 @@ const promptUser = () => {
     },
     {
         type: "input",
-        name: "webpage:",
+        name: "webpage",
         message: "What is the Webpage URL"
+    },
+    {
+        type: "checkbox",
+        name: "languages",
+        message: "Please provide any information on the technologies you used in your project. (optional)",
+        choices: [
+            new inquirer.Separator('The languages ='),
+            {
+                name: 'HTML',
+            },
+            {
+                name: 'CSS',
+            },
+            {
+                name: 'JavaScript',
+            },
+            {
+                name: 'Node.js',
+            }
+        ],
     },
     {
         type: "input",
@@ -140,50 +160,45 @@ function generateMD(response){
         badge = "![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)"
     }
     return `# ${response.title} ${badge}
-    ## Description
-    ${response.description}
-
-    ### Author's Name
-    ${response.author}
-    ### Github Username
-    ${response.username}
-    ### User's email address
-    ${response.email}
-    ### Projects website URL
-    ${response.webpage}
-
-    ## Table of Contents:
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [License](#license)
-    - [Contribution](#contribution)
-    - [Tests](#test)
-    - [Questions](#questions)
-
-    ### Installation:
-    In order to install the necessary dependencies, open the console and run the following:
-    \`\`\`${response.installation}\`\`\`
-
-    ### Usage:
-    ${response.usage}
-
-    ### Test:
-    ${response.test}
-
-    ### License:
-    This project is licensed under:
-    ${response.license}
-
-    ### Contribution:
-    ${response.credits}
-
-    ### Guidelines how to contribute:
-    ${response.contributions}
-    
-    ### Questions:
-    If you have any questions contact me on [GitHub](https://github.com/${response.username}) or contact 
-${response.author} at ${response.email}
-    `
+## Description
+${response.description}
+### Author's Name
+${response.author}
+### Github Username
+${response.username}
+### User's email address
+${response.email}
+### Projects website URL
+${response.webpage}
+### Languages
+${response.languages}
+## Table of Contents:
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contribution](#contribution)
+- [Tests](#test)
+- [Questions](#questions)
+### Installation:
+In order to install the necessary dependencies, open the console and run the following:
+\`\`\`${response.installation}\`\`\`
+### Usage:
+${response.usage}
+### Test:
+In order to test open the console and run the following:
+${response.test}
+### License:
+This project is licensed under:
+${response.license}
+### Contribution:
+${response.credits}
+### Guidelines how to contribute:
+${response.contributions}
+### Image preview
+![picture](./images/me.jpeg)
+### Questions:
+If you have any questions contact me on [GitHub](https://github.com/${response.username}) or contact 
+${response.author} at ${response.email}`
 }
 
 promptUser().then(function(response){

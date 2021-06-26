@@ -1,9 +1,11 @@
 // Packages used for this application:
 const inquirer = require('inquirer');
 const fs = require ('fs');
+const util = require('util');
 // TODO: Create an array of questions for user input
-const questions = () =>
-inquirer.prompt([
+const writeFileSync = util.promisify(fs.writefile)
+function promptUser(){
+    return inquirer.prompt([
     {
         type: "input",
         name: "Author",
@@ -87,7 +89,7 @@ inquirer.prompt([
             if (input) {
                 return true;
             }else {
-                console.log ("Please provide the necessary instructions"),
+                console.log ("Please provide the necessary instructions");
             }
         }
     },
@@ -140,6 +142,34 @@ function generateMD(response){
     *[Questions](#questions)
 
     ###Installation:
+    In order to install the necessary dependencies, open the console and run the following:
+    \`\`\`${response.installation}\`\`\`
+
+    ### Usage:
+    ${response.usage}
+
+    ###License:
+    This project is licensed under:
+    ${response.license}
+
+    ###Contribution:
+    ${response.contribute}
     
-    
+    ###Tests:
+    In order to test open the console and run the following:
+    \`\`\`${response.tests}\`\`\`
+
+    ###Questions:
+    If you have any questions contact me on [GitHub](https://github.com/${response.username}) or contact 
+${response.author} at ${response.email}
     `
+}
+
+promptUser().then(function(response){
+    const markdown = generateMD(response);
+    return fs.writeFileSync("./test/generatedREADME.md", markdown);
+}).then(function() {
+    console.log("Generating README.md...");
+}).catch(function(err){
+    console.log(err)
+})

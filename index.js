@@ -143,44 +143,44 @@ function generateMD(response){
    ## Description
     ${response.description}
 
-    ###Author's Name
+    ### Author's Name
     ${response.author}
-    ###Github Username
+    ### Github Username
     ${response.username}
-    ###User's email address
+    ### User's email address
     ${response.email}
-    ###Projects website URL
+    ### Projects website URL
     ${response.webpage}
 
-    ##Table of Contents:
-    -[Installation](#installation)
-    -[Usage](#usage)
-    -[License](#license)
-    -[Contribution](#contribution)
-    -[Tests](#test)
-    -[Questions](#questions)
+    ## Table of Contents:
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [License](#license)
+    - [Contribution](#contribution)
+    - [Tests](#test)
+    - [Questions](#questions)
 
-    ###Installation:
+    ### Installation:
     In order to install the necessary dependencies, open the console and run the following:
     \`\`\`${response.installation}\`\`\`
 
-    ###Usage:
+    ### Usage:
     ${response.usage}
 
-    ###Test:
+    ### Test:
     ${response.test}
 
-    ###License:
+    ### License:
     This project is licensed under:
     ${response.license}
 
-    ###Contribution:
+    ### Contribution:
     ${response.credits}
 
-    ###Guidelines how to contribute:
+    ### Guidelines how to contribute:
     ${response.contributions}
     
-    ###Questions:
+    ### Questions:
     If you have any questions contact me on [GitHub](https://github.com/${response.username}) or contact 
 ${response.author} at ${response.email}
     `
